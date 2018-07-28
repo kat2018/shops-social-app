@@ -2,8 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
-
 const mongoose = require('mongoose');
+
+
 mongoose.Promisse = global.Promise;
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true }); //mongodb://localhost/shops-social-app
 
@@ -15,6 +16,9 @@ connection.on("connected", () => {
 connection.on("error", err => {
   console.log("Mongoose default connection error: " + err);
 });
+
+
+
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
