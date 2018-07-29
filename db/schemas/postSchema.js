@@ -9,7 +9,14 @@ const PostSchema = new Schema({
     type: String,
     require: false
   },
-  date: { type: Date, default: Date.now }
-});
+  date: { 
+    type: Date, 
+    default: Date.now 
+  }
+},
+  {
+    timeStamps: {}
+  }
+);
 
 module.exports = PostSchema
