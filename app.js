@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 
 mongoose.Promisse = global.Promise;
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true }); //mongodb://localhost/shops-social-app
+mongoose.connect(process.env.MONGODB_URI); //mongodb://localhost/shops-social-app
 
 const connection = mongoose.connection;
 connection.on("connected", () => {
