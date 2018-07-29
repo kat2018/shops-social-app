@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const StoreSchema = require("../db/schema");
+const Schema = require("../db/schema");
 
-const StoreSchema = mongoose.model("Store", StoreSchema);
+const Store = mongoose.model("Store", Schema.StoreSchema);
 
-module.exports = StoreSchema;
+module.exports = Store;
