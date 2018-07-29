@@ -55,9 +55,7 @@ const PostSchema = new Schema({
     }
 );
 
-const UserSchema = mongoose.model('User', UserSchema)
-const StoreSchema = mongoose.model('Store', StoreSchema)
-const PostSchema = mongoose.model('Post', PostSchema)
+
 
 module.exports = {
     PostSchema,
