@@ -1,14 +1,15 @@
 const Schema = require('mongoose').Schema
 
 const PostSchema = new Schema({
-    postComment: {
-        type: String,
-        require: true
-    }, 
-    userSharedImageOfStore: {
-        type: String,
-        require: false
-    } 
-})
+  userComment: {
+    type: String,
+    require: true
+  },
+  userSharedImageOfStore: {
+    type: String,
+    require: false
+  },
+  date: { type: Date, default: Date.now }
+});
 
 module.exports = PostSchema
