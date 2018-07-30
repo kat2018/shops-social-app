@@ -1,29 +1,25 @@
 const Schema = require("mongoose").Schema;
 
-const UserSchema = new Schema(
-    {
-        userName: {
-            type: String,
-            required: [true]
-        },
-        email: {
-            type: String
-        },
-        age: {
-            type: Number,
-            min: [18, 'Must be 18 to post'],
-            required: [true]
-        },
-        photoUrl: {
-            type: String,
-            default: 'https://cdn2.vectorstock.com/i/1000x1000/46/41/shopping-girl-vector-1224641.jpg'
-        },
-        stores: [StoreSchema]
-    },
-    {
-        timeStamps: {},
-    })
 
+const PostSchema = new Schema(
+  {
+    userComment: {
+      type: String,
+      require: true
+    },
+    userSharedImageOfStore: {
+      type: String,
+      require: false
+    },
+    date: {
+      type: Date,
+      default: Date.now
+    }
+  },
+  {
+    timeStamps: {}
+  }
+);
 const StoreSchema = new Schema({
     storeName: {
         type: String,
@@ -36,23 +32,30 @@ const StoreSchema = new Schema({
     userPosts: [PostSchema]
 })
 
-const PostSchema = new Schema({
-    userComment: {
-        type: String,
-        require: true
+const UserSchema = new Schema(
+  {
+    userName: {
+      type: String,
+      required: [true]
     },
-    userSharedImageOfStore: {
-        type: String,
-        require: false
+    email: {
+      type: String
     },
-    date: {
-        type: Date,
-        default: Date.now
-    }
-},
-    {
-        timeStamps: {}
-    }
+    age: {
+      type: Number,
+      min: [18, "Must be 18 to post"],
+      required: [true]
+    },
+    photoUrl: {
+      type: String,
+      default:
+        "https://cdn2.vectorstock.com/i/1000x1000/46/41/shopping-girl-vector-1224641.jpg"
+    },
+    stores: [StoreSchema]
+  },
+  {
+    timeStamps: {}
+  }
 );
 
 
