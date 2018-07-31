@@ -1,8 +1,7 @@
 const Schema = require("mongoose").Schema;
 
 
-const PostSchema = new Schema(
-  {
+const PostSchema = new Schema({
     userComment: {
       type: String,
       require: true
@@ -10,16 +9,11 @@ const PostSchema = new Schema(
     userSharedImageOfStore: {
       type: String,
       require: false
-    },
-    date: {
-      type: Date,
-      default: Date.now
     }
   },
   {
     timeStamps: {}
-  }
-);
+  });
 const StoreSchema = new Schema({
     storeName: {
         type: String,
@@ -51,7 +45,7 @@ const UserSchema = new Schema(
       default:
         "https://cdn2.vectorstock.com/i/1000x1000/46/41/shopping-girl-vector-1224641.jpg"
     },
-    stores: [StoreSchema]
+    userPosts: [PostSchema]
   },
   {
     timeStamps: {}
