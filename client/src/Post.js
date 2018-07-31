@@ -4,7 +4,8 @@ class Post extends Component {
     render() {
         return (
             <div>
-                Hello From Post
+                <h1>Hello From Post</h1>
+                
             </div>
         );
     }
