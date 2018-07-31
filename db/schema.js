@@ -1,4 +1,5 @@
-const Schema = require("mongoose").Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema
 
 
 const PostSchema = new Schema({
@@ -12,8 +13,11 @@ const PostSchema = new Schema({
     }
   },
   {
-    timeStamps: {}
+    timeStamps: {
+      type: Date
+    }
   });
+
 const StoreSchema = new Schema({
     storeName: {
         type: String,
@@ -49,14 +53,20 @@ const UserSchema = new Schema(
     userPosts: [PostSchema]
   },
   {
-    timeStamps: {}
+    timeStamps: {
+      type: Date
+    }
   }
 );
+
+const PostModel = mongoose.model("Post", PostSchema);
+const StoreModel = mongoose.model("Store", StoreSchema);
+const UserModel = mongoose.model('User', UserSchema)
 
 
 
 module.exports = {
-    PostSchema,
-    StoreSchema,
-    UserSchema
+    PostModel,
+    StoreModel,
+    UserModel
 }

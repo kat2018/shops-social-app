@@ -1,10 +1,14 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
-const Post = require("../models/Post");
-const Store = require("../models/Store");
-const User = require("../models/User");
-
 mongoose.connect(process.env.MONGODB_URI);
+
+const { PostModel,
+    StoreModel,
+    UserModel } = require('./schema')
+
+// const Post = require("../models/Post");
+// const Store = require("../models/Store");
+// const User = require("../models/User");
 
 mongoose.connection.once("open", () => {
   console.log(`Mongoose Connected to MongoDB`);
@@ -19,7 +23,7 @@ mongoose.connection.on("error", error => {
 });
 
 //Clear the database of existing posts
-Post.remove({})
+PostModel.remove({})
     .then(() => {
         console.log('All posts deleted!')
     })
@@ -28,7 +32,7 @@ Post.remove({})
     })
 
 //Clear the database of existing stores
-Store.remove({})
+StoreModel.remove({})
     .then(() => {
         console.log('All stores deleted!')
     })
@@ -37,7 +41,7 @@ Store.remove({})
     })
 
 //Clear the database of existing users
-User.remove({})
+UserModel.remove({})
     .then(() => {
         console.log('All users deleted!')
     })
@@ -47,13 +51,13 @@ User.remove({})
 
 //Generate instances of Users and their posts
 
-const post1 = new Post({
+const post1 = new PostModel({
     userComment: "This is like a candy store! My niece loved it here!",
     userSharedImageOfStore:
         "https://aredlipandanudeshoe.files.wordpress.com/2015/03/sephora-selfie.jpg"
 });
 
-const post2 = new Post({
+const post2 = new PostModel({
     userComment: "Fancy",
     userSharedImageOfStore:
         "https://i.ytimg.com/vi/jhM-cFNIknA/maxresdefault.jpg"
@@ -61,19 +65,19 @@ const post2 = new Post({
 
 const posts = [post1, post2]
 
-const sephora = new Store({
+const sephora = new StoreModel({
     storeName: "Sephora",
     storeDescription: "Makeup and Skincare",
     userPosts: [posts]
 });
 
-const lululemon = new Store({
+const lululemon = new StoreModel({
     storeName: "lululemon",
     storeDescription: "Yoga gear",
     userPosts: [posts]
 });
 
-const hopschicken = new Store({
+const hopschicken = new StoreModel({
     storeName: "Hops Chicken",
     storeDescription: "best chicken bisquit",
     userPosts: [posts]
@@ -81,7 +85,7 @@ const hopschicken = new Store({
 
 const stores = [sephora, lululemon, hopschicken]
 
-const betty = new User({
+const betty = new UserModel({
       userName: "betty white",
       email: "betty@w.io",
       age: "96",
@@ -90,7 +94,7 @@ const betty = new User({
       userPosts: [posts, stores]
     })
 
-const brad = new User({
+const brad = new UserModel({
     userName: "brad pitt",
       email: "brad@p.io",
       age: "54",
@@ -101,7 +105,7 @@ const brad = new User({
 
 const users = [betty, brad]
 
-User.insertMany(users)
+UserModel.insertMany(users)
     .then(() => {
     console.log(`Added ${users.length} users to database`)
 })
