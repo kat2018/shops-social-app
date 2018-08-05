@@ -1,15 +1,17 @@
-import React, { Component } from 'react';
-
+import React, { Component } from 'react'
+import PostList from './components/PostList'
+import StoreIndex from './components/StoreIndex';
 
 class App extends Component {
     
     render() {
         return (
             <div>
-                Hello from App.js
+                <StoreIndex />
+                <PostList />
             </div>
-        );
+        )
     }
 }
 
-export default App;
+export default App
