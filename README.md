@@ -1,7 +1,7 @@
 # shops-social-app
 
 
-Heroku: https://shops-social-app.herokuapp.com/
+Heroku Deployed App (pending resolve production issue): https://shops-social-app.herokuapp.com/
 
 Trello: https://trello.com/b/GgNVLx00/project-capstone
 
