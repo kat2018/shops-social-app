@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import PostList from './components/PostList'
 import StoreIndex from './components/StoreIndex';
+import StoreItem from './components/StoreItem';
+import PostList from './components/PostList'
 
 class App extends Component {
     
@@ -8,6 +9,7 @@ class App extends Component {
         return (
             <div>
                 <StoreIndex />
+                <StoreItem/>
                 <PostList />
             </div>
         )

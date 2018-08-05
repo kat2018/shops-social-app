@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+
 
 class StoreIndexItem extends Component {
     render() {
         return (
             <div>
-                Each Store
+                StoreName
             </div>
         );
     }
