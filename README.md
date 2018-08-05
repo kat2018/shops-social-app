@@ -1,7 +1,10 @@
 # shops-social-app
 
+Welcome to Shops Social. 
 
-Heroku Deployed App (pending resolve production issue): https://shops-social-app.herokuapp.com/
+This app will allow shoppers to add their favorite stores to their profile and leave comments with their favorite things about their favorite stores. 
+
+[Click HERE to view Deployed App on Heroku](https://shops-social-app.herokuapp.com/)
 
 Trello: https://trello.com/b/GgNVLx00/project-capstone
 
