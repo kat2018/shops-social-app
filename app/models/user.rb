@@ -1,4 +1,4 @@
-class User < ApplicationRecord::Base
+class User < ApplicationRecord
     has_many :posts
-    has_many :stores, though: :posts, :uniq => true
+    has_many :stores, through: :posts
 end

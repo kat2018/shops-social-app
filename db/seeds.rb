@@ -15,15 +15,18 @@ Store.destroy_all
 
 10.times do 
     User.create!(
-    user_name: Faker::Internet.unique.username,
-    email: Faker::Internet.unique.free_email, 
-    user_image: Faker::Avatar.unique.image
+    username: Faker::Internet.unique.username,
+    free_email: Faker::Internet.unique.free_email, 
+    image: Faker::Avatar.unique.image
 )
 10.times do 
     Store.create!(
-    store_name: Faker::Restaurant.unique.name,
-    store_description: Faker::Restaurant.unique.description,
+    name: Faker::Restaurant.unique.name,
+    description: Faker::Restaurant.description,
 )
 end
 end
 
+puts "Seed finished"
+puts "#{User.count} users created"
+puts "#{Store.count} stores created"
