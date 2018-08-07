@@ -7,10 +7,23 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+require_relative './user_data.rb'
+require_relative './store_data.rb'
 
-def User.create(
-    user_name: Faker::Internet.username,
-    email: Faker::Internet.free_email, 
-    user_image: Faker::Avatar.image
+User.destroy_all
+Store.destroy_all
+
+10.times do 
+    User.create!(
+    user_name: Faker::Internet.unique.username,
+    email: Faker::Internet.unique.free_email, 
+    user_image: Faker::Avatar.unique.image
+)
+10.times do 
+    Store.create!(
+    store_name: Faker::Restaurant.unique.name,
+    store_description: Faker::Restaurant.unique.description,
 )
 end
+end
+

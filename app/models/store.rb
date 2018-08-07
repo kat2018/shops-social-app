@@ -1,2 +1,4 @@
-class Store < ApplicationRecord
+class Store < ApplicationRecord::Base
+      has_many :posts
+      has_many :users, through: :posts
 end
