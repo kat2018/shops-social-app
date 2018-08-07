@@ -1,4 +1,4 @@
 class User < ApplicationRecord
-    has_many :posts
-    has_many :stores, through: :posts
+    has_many :posts, dependent: :destroy
+    has_many :stores, through: :posts, dependent: :destroy
 end
