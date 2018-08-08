@@ -24,7 +24,9 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id]).destroy
     render status: :ok
   end
+
   private
+
   def user_params
     params.require(:user).permit(:username, :free_email, :image)
   end
