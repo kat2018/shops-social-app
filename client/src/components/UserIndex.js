@@ -5,6 +5,9 @@ import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 import { Card, Image } from 'semantic-ui-react'
 
+//Most of this component was inpired by this repo: https://git.generalassemb.ly/danielpino-ga-wdi/wdi16-tunr-react-rails/blob/master/client/src/components/ArtistIndex.js
+
+
 const UserHeader = styled.h1`
     background-color: gray;
 `
