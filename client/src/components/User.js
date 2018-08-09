@@ -5,9 +5,7 @@ import axios from 'axios'
 
 class User extends Component {
     state = {
-        user: {},
-        stores: [],
-        posts: []
+        user: {}
     }
 
     componentDidMount() {
@@ -31,19 +29,19 @@ class User extends Component {
     }
 
     render() {
-        const storesList = this.state.stores.map((store) => {
-            return (
-                <div>
-                    <div>{store.name}</div>
-                </div>
-            )
-        })
+        // const storesList = this.state.stores.map((store) => {
+        //     return (
+        //         <div>
+        //             <div>{store.name}</div>
+        //         </div>
+        //     )
+        // })
         return (
             <div>
                 <img src={this.state.user.image} alt={this.state.user.username} />
                 <h1> {this.state.user.username} </h1>
                 <h1> {this.state.user.free_email} </h1>
-                {storesList}
+                {/* {storesList} */}
             </div>
         );
     }

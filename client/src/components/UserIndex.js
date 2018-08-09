@@ -81,7 +81,13 @@ class UserIndex extends Component {
                     Find Your User
                 </UserHeader>
                 <Card.Group centered>
-                {userList}
+                <div class="ui three column grid">
+                    <div class="column">
+                        <div class="ui segment">
+                            {userList}
+                        </div>
+                    </div>
+                </div>
                 </Card.Group>
             </div>
         )
