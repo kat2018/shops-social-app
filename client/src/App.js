@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import UserIndex from './components/UserIndex';
-// import StoreItem from './components/StoreItem';
-// import PostList from './components/PostList'
+import User from './components/User';
+
 
 class App extends Component {
     
@@ -10,11 +10,10 @@ class App extends Component {
         return (
             <Router>
                 <div>
-                    <Link to='/'> All Users</Link >
-
+                    <Link to='/'>Home</Link >
                     <Switch>
-                        <Route exact patch='/' component={UserIndex} />
-                        {/* <Route exact patch='/users' component={StoreIndex} /> */}
+                        <Route exact path='/' component={UserIndex} />
+                        <Route exact path='/api/users/:id' component={User} />
                     </Switch>
                 </div>
             </Router>

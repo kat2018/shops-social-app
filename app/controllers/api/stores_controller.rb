@@ -1,6 +1,6 @@
 class Api::StoresController < ApplicationController
   def index
-    @store = Store.all
+    @stores = User.find(params[:user_id])
     render json: @store
   end
 
