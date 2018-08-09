@@ -9,10 +9,10 @@ class UserNewForm extends Component {
     }
 
     handleChange = (event) => {
-        const username = event.target.username
+        const name = event.target.name
         const newState = {...this.state}
-        newState[username] = event.target.value
-        this.setState(newState)
+        newState[name] = event.target.value
+        this.setState({...newState})
     }
 
     handleSubmit = async (event) => {
@@ -23,7 +23,7 @@ class UserNewForm extends Component {
             image: this.state.image
         }
         await axios.post('/api/users/', payload)
-        await this.props.getAllUsers()
+        await this.props.fetchUsers()
     }
 
     render() {

@@ -30,70 +30,55 @@ class UserIndex extends Component {
         this.state = {
             error: '',
             users: [],
+            stores: [],
             showUserNewForm: false
         }
     }
 
-    componentWillMount(){
+    componentDidMount(){
         this.fetchUsers()
     }
-    fetchUsers = async() =>{
-        try{
-            const res = await axios.get('/api/users/')
-            await this.setState({ users: res.data })
-            return res.data
-        }
-        catch (err) {
+    fetchUsers = () =>{
+        axios.get('/api/users')
+            .then((res) => {
+                this.setState({
+                    users: res.data
+                })
+            })
+            .catch((err) => {
             console.log(err)
-            await this.setState({error: err.message})
-            return err.message
-        }
+        })
     }
-    toggleUserNewForm =() => { 
+    toggleUserNewForm = () => { 
         this.setState({showUserNewForm: !this.state.showUserNewForm})
     }
 
 
     render() {
-        if(this.state.error){
+        const userList = 
+        this.state.users.map((user) => {
             return(
-            <div>
-                {this.state.error}
-            </div>
-            )
-        }
-        // return(
-        //     <div>
-        //         <h1>All Users</h1>
-        //         {this.state.users.map(user =>(
-        //             <div key={user.id}>
-        //             <Link to={`/user/${user.id}`} > {user.username} </Link>
-        //             </div>
-        //         ))}
-        //     </div>
-        // )
-        const userList = this.state.users.map((user) => {
-            return (
                 <UserIndexItemContainer key={user.id} >
-                <Card.Group>
-                <Card>
-                    <Card.Content>
-                        <Image avatar src={user.image} />
-                        <Card.Header>
-                            <Link to={`/api/users/${user.id}`}> {user.username} </Link>
-                        </Card.Header>
-                </Card.Content>
-                <Card.Content extra>
-                <a>
-                    <Icon name='user' />
-                    {user.free_email}
-                </a>
-                </Card.Content>
-                
-                </Card>
-                </Card.Group>
-                </UserIndexItemContainer>
-            );
+                 <Card.Group>
+                 <Card>
+                     <Card.Content>
+                         <Image avatar src={user.image} />
+                         <Card.Header>
+                             <Link to={`/api/users/${user.id}`}> {user.username} </Link>
+                         </Card.Header>
+                 </Card.Content>
+                 <Card.Content extra>
+                 <a>
+                     <Icon name='user' />
+                     {user.free_email}
+                 </a>
+                 </Card.Content>
+
+                 </Card>
+                 </Card.Group>
+                 </UserIndexItemContainer>
+            )
+            
         })
         return(
             <div>
@@ -105,12 +90,12 @@ class UserIndex extends Component {
                         New User
                     </Button>
 
-                    {this.state.showUserNewForm ? <UserNewForm getAllUsers={this.getAllUsers}/> : null }
+                    {this.state.showUserNewForm ? <UserNewForm fetchUsers={this.fetchUsers}/> : null }
                 
                 <Card.Group>
-                    <Card>
+ 
                         {userList}
-                    </Card>
+                 
                 </Card.Group>
  
             </div>
